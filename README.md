@@ -1,9 +1,9 @@
-Job Ads Service
+📄 Job Ads Service
 
 A lightweight microservice that exposes job postings through a public API and returns results in XML format by default.
-Built using Node.js, Express, and MongoDB, and fully containerized using Docker.
+Built using Node.js, Express, and MongoDB, fully containerized using Docker.
 
-This project fulfills the assignment requirements for:
+This project fulfills all assignment requirements:
 
 Connecting to MongoDB
 
@@ -18,64 +18,68 @@ Running completely in Docker
 ✨ Features
 
 ✔ REST API using Express
+
 ✔ MongoDB integration using Mongoose
+
 ✔ XML response output (xml.js)
-✔ JSON optional output (?format=json)
+
+✔ JSON output (?format=json)
+
 ✔ Pagination (?page=1&pageSize=20)
-✔ Seed script for inserting example data
-✔ Dockerized environment
-✔ Clean project structure
+
+✔ Seed script for inserting example jobs
+
+✔ Dockerized backend + MongoDB
+
+✔ Clean and structured folder layout
 
 📁 Project Structure
 job-ads-service/
- ├── server.js
- ├── config/
- │    └── db.js
- ├── controllers/
- │    └── jobController.js
- ├── routes/
- │    └── jobRoutes.js
- ├── services/
- │    └── jobService.js
- ├── models/
- │    └── JobPosting.js
- ├── utils/
- │    └── xml.js
- ├── seed/
- │    └── seed.js
- ├── Dockerfile
- ├── docker-compose.yml
- ├── package.json
- └── README.md
+├── server.js
+├── config/
+│    └── db.js
+├── controllers/
+│    └── jobController.js
+├── routes/
+│    └── jobRoutes.js
+├── services/
+│    └── jobService.js
+├── models/
+│    └── JobPosting.js
+├── utils/
+│    └── xml.js
+├── seed/
+│    └── seed.js
+├── Dockerfile
+├── docker-compose.yml
+├── package.json
+└── README.md
 
 🐳 Running the Project with Docker
-1️⃣ Start the application
+▶️ 1. Start the Application
 docker-compose up --build
 
 
-You should see:
+Expected output:
 
 MongoDB connected
 Server running on port 3000
 
-2️⃣ Seed the database
+🌱 2. Seed the Database
 docker-compose exec api node seed/seed.js
 
 
-This inserts sample job postings into the database.
+This inserts sample job postings into MongoDB.
 
 🌐 API Endpoints
-GET /api/job-postings
+📄 GET /api/job-postings (XML Default)
 
-Returns job postings in XML format.
+Default response format: XML
 
-Example:
-
+👉 Example
 http://localhost:3000/api/job-postings
 
-
-Sample XML:
-
+Sample XML Output
 <jobPostings>
   <jobPosting>
     <title>Senior Developer</title>
@@ -84,16 +88,51 @@ Sample XML:
   </jobPosting>
 </jobPostings>
 
-JSON Output (Optional)
-http://localhost:3000/api/job-postings?format=json
+🟦 JSON Output (Optional)
 
-Pagination
+Append ?format=json:
+
+👉 http://localhost:3000/api/job-postings?format=json
+
+🔢 Pagination
+
+Both formats support pagination:
+
+?page=1&pageSize=20
+
+
+👉 Example
 http://localhost:3000/api/job-postings?page=1&pageSize=20
 
-🧹 Stopping the Application
+🛑 Stopping the Application
+
+Stop containers:
+
 docker-compose down
 
 
-To also remove database data:
+Stop + remove the database volume:
 
 docker-compose down -v
+
+📝 Summary
+
+This microservice provides:
+
+MongoDB-backed job storage
+
+Express REST API
+
+XML + JSON response formats
+
+Pagination
+
+Docker deployment
+
+Seed data support
+
+Everything needed for a complete job posting API.
+
+👤 Author
+
+Abhishek Tripathi
